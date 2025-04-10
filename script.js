@@ -3,7 +3,7 @@
 const startBtn = document.querySelector(".startBtn");
 const showTime = document.querySelector(".showTime");
 const infoTime = document.querySelector(".infoTime");
-const soundEffect = new Audio("./assets/ring-drop.mp3");
+const soundEffect = new Audio("./assets/bells-131461.mp3");
 
 function SessionHandler() {
   const incBtn = document.querySelector(".inc");

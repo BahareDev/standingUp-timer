@@ -48,7 +48,7 @@ main {
 }
 
 .screen-container p {
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-size: 3rem;
   color: #ef7f85;
   font-weight: bold;
@@ -58,10 +58,17 @@ main {
   height: 200px;
   margin: 1rem;
   display: flex;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
 }
 
+.setting-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+}
 .setting-container .session-container {
   background-color: rgb(4, 71, 4);
   height: 160px;
@@ -102,8 +109,13 @@ main {
 .setting-lable {
   text-transform: uppercase;
   color: #fff;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.setting-lable p{
+  margin-top: 0.5rem 0;
 }
