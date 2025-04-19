@@ -51,7 +51,6 @@ function SetTimer(min = 45) {
     () => {
       clearInterval(id);
       alert("stoped");
-      console.log("Stopd");
     },
     { once: true }
   );

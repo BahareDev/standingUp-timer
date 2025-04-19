@@ -67,7 +67,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
 }
 .setting-container .session-container {
   background-color: rgb(4, 71, 4);
@@ -115,7 +114,6 @@ main {
   align-items: center;
 }
 
-
-.setting-lable p{
+.setting-lable p {
   margin-top: 0.5rem 0;
 }
