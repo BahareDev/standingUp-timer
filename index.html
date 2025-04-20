@@ -4,40 +4,122 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StandingUp-timer</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link href="./src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
-  <body>
-    <main>
-      <div class="container">
-        <div class="screen-container">
-          <h5 class="infoTime">every 45 min</h5>
-          <p class="showTime">11:50:00</p>
+  <body class="bg-blue-400 min-h-screen flex items-center justify-center p-4">
+    <main class="w-full max-w-md">
+      <div class="bg-white p-6 rounded-lg">
+        <!-- section01 -->
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-2xl font-semibold text-gray-900">
+            Standing-Up Reminder
+          </h1>
+          <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200">
+            <i class="fas fa-moon text-gray-700"></i>
+          </button>
         </div>
 
-        <div class="setting-container">
-          <!-- start & stop button -->
-          <div class="setting-btn">
-            <button class="startBtn">start</button>
-            <button class="EndBtn">stop</button>
+        <!-- section 02 -->
+        <div class="mb-8">
+          <div class="flex items-center justify-between mb-2">
+            <label for="interval" class="block text-gray-700"
+              >Reminder Interval(min)</label
+            >
+            <span id="intervalValue" class="text-sm font-medium text-blue-600"
+              >45</span
+            >
           </div>
 
-          <div class="session-container">
-            <div class="session-handler">
-              <div class="setting-number">
-                <div class="inc">+</div>
-                <div class="session" id="insert-Min">45</div>
-                <div class="dec">-</div>
-              </div>
-            </div>
+          <input
+            type="range"
+            id="interval"
+            min="30"
+            max="60"
+            value="45"
+            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          />
+        </div>
 
-            <div class="setting-lable">
-              <p>Session lenght</p>
+        <!-- section 03 -->
+        <div class="flex flex-col items-center mb-8">
+          <div id="timerDisplay" class="text-6xl font-bold mb-4 text-gray-900">
+            45:00
+          </div>
+
+          <div class="flex space-x-4">
+            <button
+              id="startBtn"
+              class="px-6 py-3 bg-blue-400 text-white hover:bg-blue-600 rounded-full font-medium"
+            >
+              <i class="fas fa-play mr-2"></i>Start
+            </button>
+            <button
+              id="resetBtn"
+              class="px-6 bg-gray-200 text-gray-800 rounded-full font-medium hover:bg-gray-300"
+            >
+              <i class="fas fa-redo mr-2"></i>Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- section 04-->
+        <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+          <div class="flex items-center">
+            <i class="fas fa-bell text-macAccent mr-3"></i>
+            <div>
+              <h3 class="font-medium text-gray-900 dark:text-white">
+                Next Reminder
+              </h3>
+              <p
+                id="nextReminder"
+                class="text-sm text-gray-600 dark:text-gray-300"
+              >
+                Not scheduled
+              </p>
             </div>
           </div>
         </div>
       </div>
+
+      <div
+        id="notification"
+        class="notification bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg w-64 border-l-4 border-macAccent"
+      >
+        <div class="flex items-start">
+          <div class="flex-shrink-0 pt-0.5">
+            <i class="fas fa-bell text-macAccent"></i>
+          </div>
+          <div class="ml-3 w-0 flex-1">
+            <p class="text-sm font-medium text-gray-900 dark:text-white">
+              🐨Time to Reset.
+            </p>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              You've been working for
+              <span id="notificationInterval">45</span> minutes.
+            </p>
+          </div>
+          <div class="ml-4 flex-shrink-0 flex">
+            <button
+              id="closeNotification"
+              class="bg-white dark:bg-gray-800 rounded-md inline-flex text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <audio
+        id="notificationSound"
+        src="assets/bells-131461.mp3"
+        preload="auto"
+      ></audio>
     </main>
 
-    <script src="./script.js"></script>
+    <script src="./src/script.js"></script>
   </body>
 </html>
