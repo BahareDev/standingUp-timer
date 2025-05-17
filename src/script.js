@@ -119,14 +119,29 @@ function startTimer() {
     );
     updateNextReminderDisplay();
 
+    // timer = setInterval(() => {
+    //   timeLeft--;
+    //   updateTimerDisplay();
+
+    //   if (timeLeft <= 0) {
+    //     timerComplete();
+    //   }
+    // }, 1000);
+
+    const intervalMinutes = parseInt(intervalSlider.value);
+    const totalSeconds = intervalMinutes * 60;
+    const startTime = Date.now();
+
     timer = setInterval(() => {
-      timeLeft--;
+      const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+      timeLeft = totalSeconds - elapsedSeconds;
       updateTimerDisplay();
 
-      if (timeLeft <= 0) {
-        timerComplete();
-      }
-    }, 1000);
+   if (timeLeft <= 0) {
+    clearInterval(timer);
+    timerComplete();
+  }
+}, 1000);
   }
 }
 
@@ -136,6 +151,9 @@ function pauseTimer() {
   startBtn.innerHTML = '<i class="fas fa-play mr-2"></i> Start';
   startBtn.classList.remove("bg-yellow-500", "hover:bg-yellow-600");
   startBtn.classList.add("bg-blue-400", "hover:bg-blue-600");
+
+  const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+  totalDuration = totalDuration - elapsedSeconds;
 }
 
 function resetTimer() {
@@ -153,7 +171,7 @@ function timerComplete() {
   startTimer(); // Automatically start next interval
 }
 
-function updateTimerDisplay() {
+function updateTimerDisplay(time = totalDuration) {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
   timerDisplay.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
